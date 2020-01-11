@@ -23,13 +23,9 @@ const getChannels = (gon) => {
 // console.log(getChannels(gon));
 
 class App extends React.Component {
-  state = {
-    channels: getChannels(gon),
-  }
   render() {
-    const { channels } = this.state;
     return (
-      <ChannelsList channels={channels}/>
+      <ChannelsList channels={getChannels(gon)}/>
     )
   }
 }
