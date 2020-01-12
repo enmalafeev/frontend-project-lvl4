@@ -7,7 +7,7 @@
     "slack": "dist/bin/slack.js"
   },
   "engines": {
-    "node": "10"
+    "node": "9"
   },
   "scripts": {
     "test": "jest",
@@ -15,7 +15,7 @@
     "build-app": "npx webpack -p --env production",
     "build": "npm run build-app && npm run build-server",
     "postinstall": "npm run build",
-    "start": "npm run build-app"
+    "start": "npm run build"
   },
   "repository": {
     "type": "git",
