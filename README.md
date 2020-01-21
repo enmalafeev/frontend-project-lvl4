@@ -1,15 +1,8 @@
-### mini-slack-chat
+### Requirements
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/9d3a5cdb7c528b8931c8/maintainability)](https://codeclimate.com/github/enmalafeev/frontend-project-lvl4/maintainability)
-[![Build Status](https://travis-ci.com/enmalafeev/frontend-project-lvl4.svg?branch=master)](https://travis-ci.com/enmalafeev/frontend-project-lvl4)
+* [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
-
-### Link to App:
-
-[mini-slack-chat](https://mini-slack-chat.herokuapp.com/)
-<!-- * [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) -->
-
-<!-- ### Install
+### Install
 
 ```sh
 $ make install
@@ -19,4 +12,4 @@ $ make install
 
 ```sh
 $ make start
-``` -->
+```
