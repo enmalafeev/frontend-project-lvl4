@@ -22,8 +22,6 @@ const getChannels = (gon) => {
   return channels;
 }
 
-console.log(getChannels(gon));
-
 class App extends React.Component {
   render() {
     return (
@@ -35,6 +33,3 @@ class App extends React.Component {
 const root = document.getElementById('chat');
 
 ReactDOM.render(<App />, root);
-
-console.log('it works!');
-console.log('gon', gon);
