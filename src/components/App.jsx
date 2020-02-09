@@ -6,9 +6,10 @@ const App = (props) => {
   const { channels } = props;
   return (
     <div className="row">
-      <ChannelsList channels={channels}/>
+      <ChannelsList channels={channels} />
       <ChatArea />
     </div>
-  )
+  );
 };
+
 export default App;
