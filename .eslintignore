@@ -1,2 +1,4 @@
 node_modules
 dist
+server/bin/slack.js
+src/index.js

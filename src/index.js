@@ -6,29 +6,25 @@ import 'regenerator-runtime/runtime';
 import '../assets/application.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ChannelsList from './components/ChannelsList';
 
 // import faker from 'faker';
 import gon from 'gon';
 // import cookies from 'js-cookie';
 // import io from 'socket.io-client';
+import ChannelsList from './components/ChannelsList';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
 }
 
-const getChannels = (gon) => {
-  const channels = gon.channels;
+const getChannels = (gonChannels) => {
+  const { channels } = gonChannels;
   return channels;
-}
+};
 
-class App extends React.Component {
-  render() {
-    return (
-      <ChannelsList channels={getChannels(gon)}/>
-    )
-  }
-}
+const App = () => (
+  <ChannelsList channels={getChannels(gon)} />
+);
 
 const root = document.getElementById('chat');
 
