@@ -3,7 +3,7 @@ import InputMessage from './InputMessage';
 
 const ChatArea = () => (
   <div className="ChatArea col-9">
-    <ul className="MessageList"></ul>
+    <ul className="MessageList" />
     <InputMessage />
   </div>
 );
