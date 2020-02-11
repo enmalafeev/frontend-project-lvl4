@@ -7,9 +7,9 @@ import '../assets/application.scss';
 import React from 'react';
 import { render } from 'react-dom';
 
-// import faker from 'faker';
+import faker from 'faker';
 import gon from 'gon';
-// import cookies from 'js-cookie';
+import cookies from 'js-cookie';
 // import io from 'socket.io-client';
 import App from './components/App';
 
@@ -22,6 +22,10 @@ const getChannels = (gonChannels) => {
   const { channels } = gonChannels;
   return channels;
 };
+
+const getRandomName = faker.name.findName();
+
+cookies.set('userName', getRandomName);
 
 const root = document.getElementById('chat');
 
