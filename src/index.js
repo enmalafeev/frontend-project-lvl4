@@ -23,9 +23,12 @@ const getChannels = (gonChannels) => {
   return channels;
 };
 
-const getRandomName = faker.name.findName();
+const generateRandomName = faker.name.findName();
 
-cookies.set('userName', getRandomName);
+cookies.set('userName', generateRandomName);
+const userName = cookies.get('userName');
+
+// export const UserContext = React.createContext(userName);
 
 const root = document.getElementById('chat');
 
