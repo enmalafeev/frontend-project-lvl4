@@ -6,13 +6,13 @@ const InputMessage = () => {
     initialValues: {
       userMessage: '',
     },
-    onSubmit: values => {
+    onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
   });
   return (
     <form onSubmit={formik.handleSubmit}>
-      <div class="form-group row">
+      <div className="form-group row">
         <input
           className="col-10 form-control"
           id="userMessage"
