@@ -1,16 +1,35 @@
 import React from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { useFormik } from 'formik';
 
-const InputMessage = () => (
-  <Form>
-    <div className="row">
-      <Form.Control className="col-10" type="text" placeholder="Type here..." />
-      <Button className="col-2" variant="primary" type="submit">
-        Отправить
-      </Button>
-    </div>
-  </Form>
-);
+const InputMessage = () => {
+  const formik = useFormik({
+    initialValues: {
+      userMessage: '',
+    },
+    onSubmit: values => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <div class="form-group row">
+        <input
+          className="col-10 form-control"
+          id="userMessage"
+          name="userMessage"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.userMessage}
+        />
+        <button
+          className="col-2 btn btn-primary"
+          type="submit"
+        >
+          Отправить
+        </button>
+      </div>
+    </form>
+  );
+};
 
 export default InputMessage;
