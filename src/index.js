@@ -16,7 +16,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 
-
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
 }
@@ -33,7 +32,7 @@ const userName = cookies.get('userName');
 
 const store = configureStore({
   reducer: rootReducer,
-})
+});
 
 const root = document.getElementById('chat');
 
