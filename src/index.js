@@ -12,6 +12,9 @@ import gon from 'gon';
 import cookies from 'js-cookie';
 // import io from 'socket.io-client';
 import App from './components/App';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import rootReducer from './reducers';
 
 
 if (process.env.NODE_ENV !== 'production') {
@@ -28,8 +31,14 @@ const generateRandomName = faker.name.findName();
 cookies.set('userName', generateRandomName);
 const userName = cookies.get('userName');
 
-// export const UserContext = React.createContext(userName);
+const store = configureStore({
+  reducer: rootReducer,
+})
 
 const root = document.getElementById('chat');
 
-render(<App channels={getChannels(gon)}/>, root);
+render(
+  <Provider store={store}>
+    <App channels={getChannels(gon)}/>
+  </Provider>,
+  root);
