@@ -1,13 +1,24 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
-const InputMessage = () => {
+const actionCreators = {
+  addMessage: actions.addMessage,
+};
+
+const InputMessage = (props) => {
+  // console.log(props);
+  window.addMessage = props.addMessage;
   const formik = useFormik({
     initialValues: {
       userMessage: '',
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit(values, { props, setSubmitting }) {
+      // props.addMessage(values);
+      console.log(props);
+      setSubmitting(false);
+      // alert(JSON.stringify(values, null, 2));
     },
   });
   return (
@@ -32,4 +43,4 @@ const InputMessage = () => {
   );
 };
 
-export default InputMessage;
+export default connect(null, actionCreators)(InputMessage);
