@@ -7,10 +7,10 @@ const inputMessageState = handleActions({
     const { byId, allIds } = state;
     return {
       byId: { ...byId, [newMessage.id]: newMessage },
-      allIds: [newMessage.id, ...allIds]
-    }
-  }
-},{ byId: {}, allIds: [] });
+      allIds: [newMessage.id, ...allIds],
+    };
+  },
+}, { byId: {}, allIds: [] });
 
 export default combineReducers({
   inputMessageState,

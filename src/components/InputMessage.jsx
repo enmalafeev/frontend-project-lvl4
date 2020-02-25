@@ -3,22 +3,18 @@ import { useFormik } from 'formik';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-const actionCreators = {
-  addMessage: actions.addMessage,
-};
+const mapDispatchToProps = (dispatch) => ({
+  sendMessage: () => dispatch(actions.addMessage()),
+  dispatch,
+});
 
-const InputMessage = (props) => {
-  // console.log(props);
-  window.addMessage = props.addMessage;
+const InputMessage = ({ sendMessage }) => {
   const formik = useFormik({
     initialValues: {
       userMessage: '',
     },
-    onSubmit(values, { props, setSubmitting }) {
-      // props.addMessage(values);
-      console.log(props);
-      setSubmitting(false);
-      // alert(JSON.stringify(values, null, 2));
+    onSubmit: (values) => {
+      sendMessage(values);
     },
   });
   return (
@@ -43,4 +39,4 @@ const InputMessage = (props) => {
   );
 };
 
-export default connect(null, actionCreators)(InputMessage);
+export default connect(null, mapDispatchToProps)(InputMessage);
