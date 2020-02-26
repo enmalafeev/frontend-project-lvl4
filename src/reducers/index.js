@@ -1,17 +1,14 @@
 import { combineReducers } from 'redux';
-import { handleActions } from 'redux-actions';
+import { createReducer } from '@reduxjs/toolkit';
 import * as actions from '../actions';
 
-const inputMessageState = handleActions({
-  [actions.addMessageSuccess](state, { payload: { newMessage } }) {
-    const { byId, allIds } = state;
-    return {
-      byId: { ...byId, [newMessage.id]: newMessage },
-      allIds: [newMessage.id, ...allIds],
-    };
+const messages = createReducer([], {
+  [actions.addMessageSuccess]: (state, action) => {
+    const newMessage = action.payload;
+    state.push(newMessage);
   },
-}, { byId: {}, allIds: [] });
+});
 
 export default combineReducers({
-  inputMessageState,
+  messages,
 });
