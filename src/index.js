@@ -25,13 +25,23 @@ const getChannels = (gonChannels) => {
   return channels;
 };
 
+// console.log(getChannels(gon));
+// console.log(gon.messages);
+
 const generateRandomName = faker.name.findName();
 
 cookies.set('userName', generateRandomName);
 const userName = cookies.get('userName');
 
+const preloadedState = {
+  messages: gon.messages,
+  channels: gon.channels,
+};
+
+// @ts-ignore
 const store = configureStore({
   reducer: rootReducer,
+  preloadedState,
 });
 
 const root = document.getElementById('chat');

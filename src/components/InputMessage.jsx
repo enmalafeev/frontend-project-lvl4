@@ -25,7 +25,7 @@ const InputMessage = ({ dispatch, addMessage }) => {
       userMessage: '',
     },
     onSubmit: (values, { setSubmitting }) => {
-      const newMessage = { data: { attributes: values.userMessage } };
+      const newMessage = { data: { attributes: values } };
       dispatch(addMessage(newMessage, 'general'));
       setSubmitting(false);
     },
