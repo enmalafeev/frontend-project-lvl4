@@ -3,11 +3,6 @@ import { useFormik } from 'formik';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-// const mapDispatchToProps = (dispatch) => ({
-//   sendMessage: () => dispatch(actions.addMessage()),
-//   dispatch,
-// });
-
 const mapStateToProps = (state) => {
   const props = {
     channels: state.channels,
