@@ -10,7 +10,7 @@ import * as actions from '../actions';
 
 const mapStateToProps = (state) => {
   const props = {
-    messages: state.messages,
+    channels: state.channels,
   };
   return props;
 };
@@ -19,15 +19,16 @@ const actionCreators = {
   addMessage: actions.addMessage,
 };
 
-const InputMessage = ({ dispatch, addMessage }) => {
+const InputMessage = ({ addMessage }) => {
   const formik = useFormik({
     initialValues: {
       userMessage: '',
     },
-    onSubmit: (values, { setSubmitting }) => {
+    onSubmit: (values, { setSubmitting, resetForm }) => {
       const newMessage = { data: { attributes: values } };
-      dispatch(addMessage(newMessage, 'general'));
+      addMessage(newMessage, 'general');
       setSubmitting(false);
+      resetForm();
     },
   });
   return (
@@ -39,6 +40,7 @@ const InputMessage = ({ dispatch, addMessage }) => {
           name="userMessage"
           type="text"
           onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
           value={formik.values.userMessage}
         />
         <button
