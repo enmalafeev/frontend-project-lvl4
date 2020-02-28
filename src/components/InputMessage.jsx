@@ -14,14 +14,14 @@ const actionCreators = {
   addMessage: actions.addMessage,
 };
 
-const InputMessage = ({ addMessage }) => {
+const InputMessage = ({ channels, addMessage }) => {
   const formik = useFormik({
     initialValues: {
       userMessage: '',
     },
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const newMessage = { data: { attributes: values } };
-      addMessage(newMessage, 'general');
+      addMessage(newMessage, channels[0].id);
       setSubmitting(false);
       resetForm();
     },
