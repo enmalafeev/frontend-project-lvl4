@@ -4,10 +4,15 @@ import * as actions from '../actions';
 
 const channels = createReducer([], {});
 
-const messages = createReducer([], {
+const messages = createReducer({ byId: {}, allIds: [] }, {
   [actions.addMessageSuccess]: (state, action) => {
-    const newMessage = action.payload;
-    state.push(newMessage);
+    const { byId, allIds } = state;
+    const { data: { id, attributes } } = action.payload;
+    return {
+      byId: { ...byId, [id]: attributes },
+      allIds: [id, ...allIds],
+    }
+  
   },
 });
 
