@@ -5,7 +5,7 @@ import * as actions from '../actions';
 const channels = createReducer([], {});
 
 const messages = createReducer([], {
-  [actions.addMessageSuccess]: (state, action) => {
+  [actions.socketMessageRecieved]: (state, action) => {
     const { data: { attributes } } = action.payload;
     state.push(attributes);
   },

@@ -10,11 +10,12 @@ import { render } from 'react-dom';
 import faker from 'faker';
 import gon from 'gon';
 import cookies from 'js-cookie';
-// import io from 'socket.io-client';
+import io from 'socket.io-client';
 import App from './components/App';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
+import * as actions from './actions';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -44,6 +45,10 @@ const store = configureStore({
   reducer: rootReducer,
   preloadedState,
 });
+
+const socket = io();
+
+socket.on('newMessage', (message) => store.dispatch(actions.socketMessageRecieved(message)));
 
 const root = document.getElementById('chat');
 
