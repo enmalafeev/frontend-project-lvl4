@@ -37,7 +37,7 @@ cookies.set('userName', generateRandomName);
 const userName = cookies.get('userName');
 
 const preloadedState = {
-  // messages: getMessages(gon),
+  messages: getMessages(gon),
   channels: getChannels(gon),
 };
 
