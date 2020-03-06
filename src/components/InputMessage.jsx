@@ -37,6 +37,7 @@ const InputMessage = ({ channels, addMessage }) => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.userMessage}
+          required
         />
         <button
           className="col-2 btn btn-primary"
