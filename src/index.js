@@ -31,13 +31,6 @@ const getMessages = (gonMessages) => {
   return messages;
 }
 
-const generateRandomName = faker.name.findName();
-
-
-cookies.set('userName', generateRandomName);
-const userName = cookies.get('userName');
-export const UserNameContext = React.createContext(userName);
-
 const preloadedState = {
   messages: getMessages(gon),
   channels: getChannels(gon),
@@ -48,6 +41,14 @@ const store = configureStore({
   preloadedState,
 });
 
+const userName = faker.name.findName();
+const getName = () => cookies.get('user');
+if (!getName()) {
+  cookies.set('user', userName);
+}
+
+export const UserNameContext = React.createContext(getName());
+
 const socket = io();
 
 socket.on('newMessage', (message) => store.dispatch(actions.socketMessageRecieved(message)));
@@ -56,7 +57,7 @@ const root = document.getElementById('chat');
 
 render(
   <Provider store={store}>
-    <UserNameContext.Provider value={userName}>
+    <UserNameContext.Provider value={getName()}>
       <App channels={getChannels(gon)}/>
     </UserNameContext.Provider>
   </Provider>,
