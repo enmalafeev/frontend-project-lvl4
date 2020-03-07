@@ -13,10 +13,10 @@ const mapStateToProps = (state) => {
 const RenderMessages = ({ messages }) => {
   const userName = useContext(UserNameContext);
   return (
-    <ul className="h-100 list-group">
+    <ul className="h-100 list-group border border-dark mb-3">
       {
         messages.map(({ id, userMessage }) => (
-          <li className="list-group-item" key={id}>
+          <li className="list-group-item border-0" key={id}>
             <h6 className="font-weight-bold">
               {userName}
             </h6>

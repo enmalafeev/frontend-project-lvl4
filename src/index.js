@@ -35,6 +35,7 @@ const getMessages = (gonMessages) => {
 const preloadedState = {
   messages: getMessages(gon),
   channels: getChannels(gon),
+  currentChannelId: 1,
 };
 
 const store = configureStore({
@@ -47,8 +48,6 @@ export const getName = () => cookies.get('user');
 if (!getName()) {
   cookies.set('user', userName);
 }
-
-// export const UserNameContext = React.createContext(getName());
 
 const socket = io();
 
