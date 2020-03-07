@@ -16,6 +16,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import * as actions from './actions';
+import { UserNameProvider } from './Context';
 
 if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
@@ -42,12 +43,12 @@ const store = configureStore({
 });
 
 const userName = faker.name.findName();
-const getName = () => cookies.get('user');
+export const getName = () => cookies.get('user');
 if (!getName()) {
   cookies.set('user', userName);
 }
 
-export const UserNameContext = React.createContext(getName());
+// export const UserNameContext = React.createContext(getName());
 
 const socket = io();
 
@@ -57,8 +58,8 @@ const root = document.getElementById('chat');
 
 render(
   <Provider store={store}>
-    <UserNameContext.Provider value={getName()}>
+    <UserNameProvider value={getName()}>
       <App channels={getChannels(gon)}/>
-    </UserNameContext.Provider>
+    </UserNameProvider>
   </Provider>,
   root);

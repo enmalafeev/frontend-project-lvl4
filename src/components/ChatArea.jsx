@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { connect } from 'react-redux';
 import InputMessage from './InputMessage';
-import { UserNameContext } from '..';
+import { UserNameContext } from '../Context';
 
 const mapStateToProps = (state) => {
   const props = {
