@@ -35,7 +35,7 @@ const getMessages = (gonMessages) => {
 const preloadedState = {
   messages: getMessages(gon),
   channels: getChannels(gon),
-  currentChannelId: 1,
+  currentChannel: 1,
 };
 
 const store = configureStore({

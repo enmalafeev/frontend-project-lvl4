@@ -1,11 +1,12 @@
 import React from 'react';
+import cn from 'classnames';
 import { connect } from 'react-redux';
 import { setActiveChannel } from '../features/channels/currentChannelSlice';
 
 const mapStateToProps = (state) => {
   const props = {
     channels: state.channels,
-    // currentChannelId: state.currentChannelId,
+    currentChannel: state.currentChannel,
   };
   return props;
 };
@@ -21,13 +22,17 @@ class ChannelsList extends React.Component {
     setActiveChannel(id);
   }
   render() {
-    const { channels } = this.props;
+    const { channels, currentChannel } = this.props;
+    const activeClass = (id) => cn({
+      'list-group-item': true,
+      'active': currentChannel === id,
+    });
     return (
       <ul className="list-group col-3">
         {
           channels.map(({ id, name }) => (
             <li
-              className="list-group-item"
+              className={activeClass(id)}
               key={id}
               onClick={this.handleClick(id)}
             >
