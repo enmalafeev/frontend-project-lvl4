@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { connect } from 'react-redux';
-import { setActiveChannel } from '../features/channels/currentChannelSlice';
+import { actions } from '../features/channels/currentChannelSlice';
 
 const mapStateToProps = (state) => {
   const props = {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 };
 
 const actionCreators = {
-  setActiveChannel: setActiveChannel,
+  setActiveChannel: actions.setActiveChannel,
 };
 
 class ChannelsList extends React.Component {
@@ -21,22 +21,28 @@ class ChannelsList extends React.Component {
     const { setActiveChannel } = this.props;
     setActiveChannel(id);
   }
+
   render() {
     const { channels, currentChannel } = this.props;
     const activeClass = (id) => cn({
       'list-group-item': true,
-      'active': currentChannel === id,
+      'w-100': true,
+      active: currentChannel === id,
     });
     return (
       <ul className="list-group col-3">
         {
           channels.map(({ id, name }) => (
-            <li
-              className={activeClass(id)}
-              key={id}
-              onClick={this.handleClick(id)}
-            >
-              {name}
+            <li>
+              <button
+                type="button"
+                className={activeClass(id)}
+                key={id}
+                onClick={this.handleClick(id)}
+                onKeyDown={this.handleClick(id)}
+              >
+                {name}
+              </button>
             </li>
           ))
         }
