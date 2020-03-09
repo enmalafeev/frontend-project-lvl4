@@ -5,6 +5,7 @@ import * as actions from '../actions';
 
 const mapStateToProps = (state) => {
   const props = {
+    currentChannel: state.currentChannel,
     channels: state.channels,
   };
   return props;
@@ -14,14 +15,14 @@ const actionCreators = {
   addMessage: actions.addMessage,
 };
 
-const InputMessage = ({ channels, addMessage }) => {
+const InputMessage = ({ currentChannel, addMessage }) => {
   const formik = useFormik({
     initialValues: {
       userMessage: '',
     },
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const newMessage = { data: { attributes: values } };
-      addMessage(newMessage, channels[0].id);
+      addMessage(newMessage, currentChannel);
       setSubmitting(false);
       resetForm();
     },
