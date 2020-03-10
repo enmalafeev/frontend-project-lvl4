@@ -1,14 +1,20 @@
 import React, { useContext } from 'react';
 import { connect } from 'react-redux';
+import { createSelector } from '@reduxjs/toolkit';
 import InputMessage from './InputMessage';
 import { UserNameContext } from '../Context';
 
-const mapStateToProps = (state) => {
-  const props = {
-    messages: state.messages,
-  };
-  return props;
-};
+const selectMessages = (state) => state.messages;
+const selectFilter = (state) => state.currentChannel;
+
+const showChannelMessages = createSelector(
+  [selectMessages, selectFilter],
+  (messages, currentChannel) => messages.filter(({ channelId }) => channelId === currentChannel),
+);
+
+const mapStateToProps = (state) => ({
+  messages: showChannelMessages(state),
+});
 
 const RenderMessages = ({ messages }) => {
   const userName = useContext(UserNameContext);
