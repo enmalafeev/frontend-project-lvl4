@@ -33,11 +33,10 @@ class ChannelsList extends React.Component {
       <ul className="list-group col-3">
         {
           channels.map(({ id, name }) => (
-            <li>
+            <li key={id}>
               <button
                 type="button"
                 className={activeClass(id)}
-                key={id}
                 onClick={this.handleClick(id)}
                 onKeyDown={this.handleClick(id)}
               >
