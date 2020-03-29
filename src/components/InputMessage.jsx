@@ -28,26 +28,28 @@ const InputMessage = ({ currentChannel, addMessage }) => {
     },
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <div className="form-group row">
-        <input
-          className="col-10 form-control"
-          id="userMessage"
-          name="userMessage"
-          type="text"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.userMessage}
-          required
-        />
-        <button
-          className="col-2 btn btn-primary"
-          type="submit"
-        >
-          Отправить
-        </button>
-      </div>
-    </form>
+    <div className="mt-auto">
+      <form onSubmit={formik.handleSubmit}>
+        <div className="input-group">
+          <input
+            className="col form-control"
+            id="userMessage"
+            name="userMessage"
+            type="text"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.userMessage}
+            required
+          />
+          <button
+            className="col-2 btn btn-primary"
+            type="submit"
+          >
+            Отправить
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

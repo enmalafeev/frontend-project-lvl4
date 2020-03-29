@@ -19,7 +19,7 @@ const mapStateToProps = (state) => ({
 const RenderMessages = ({ messages }) => {
   const userName = useContext(UserNameContext);
   return (
-    <ul className="h-100 list-group border border-dark mb-3">
+    <ul id="messages-box" className="chat-messages overflow-auto mb-3 p-0">
       {
         messages.map(({ id, userMessage }) => (
           <li className="list-group-item border-0" key={id}>
@@ -35,9 +35,11 @@ const RenderMessages = ({ messages }) => {
 };
 
 const ChatArea = ({ messages }) => (
-  <div className="ChatArea col-9">
-    <RenderMessages messages={messages} />
-    <InputMessage />
+  <div className="col h-100">
+    <div className="d-flex flex-column h-100">
+      <RenderMessages messages={messages} />
+      <InputMessage />
+    </div>
   </div>
 );
 

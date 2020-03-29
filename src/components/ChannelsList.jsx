@@ -30,22 +30,24 @@ class ChannelsList extends React.Component {
       active: currentChannel === id,
     });
     return (
-      <ul className="list-group col-3">
-        {
-          channels.map(({ id, name }) => (
-            <li key={id}>
-              <button
-                type="button"
-                className={activeClass(id)}
-                onClick={this.handleClick(id)}
-                onKeyDown={this.handleClick(id)}
-              >
-                {name}
-              </button>
-            </li>
-          ))
-        }
-      </ul>
+      <div className="col-3 border-right">
+        <ul className="nav flex-column nav-pills nav-fill">
+          {
+            channels.map(({ id, name }) => (
+              <li key={id}>
+                <button
+                  type="button"
+                  className={activeClass(id)}
+                  onClick={this.handleClick(id)}
+                  onKeyDown={this.handleClick(id)}
+                >
+                  {name}
+                </button>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     );
   }
 }
