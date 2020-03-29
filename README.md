@@ -1,7 +1,7 @@
 ### mini-slack-chat
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/9d3a5cdb7c528b8931c8/maintainability)](https://codeclimate.com/github/enmalafeev/frontend-project-lvl4/maintainability)
-
+![](https://github.com/actions/frontend-project-lvl4/workflows/.github/workflows/nodejs.yml/badge.svg)
 
 ### Link to App:
 
