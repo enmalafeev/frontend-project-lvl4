@@ -41,12 +41,6 @@ const InputMessage = ({ currentChannel, addMessage }) => {
             value={formik.values.userMessage}
             required
           />
-          <button
-            className="col-2 btn btn-primary"
-            type="submit"
-          >
-            Отправить
-          </button>
         </div>
       </form>
     </div>
