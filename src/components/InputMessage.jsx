@@ -32,7 +32,6 @@ const InputMessage = ({ currentChannel, addMessage }) => {
       <form onSubmit={formik.handleSubmit}>
         <div className="input-group">
           <input
-            autoFocus
             className="col form-control"
             id="userMessage"
             name="userMessage"

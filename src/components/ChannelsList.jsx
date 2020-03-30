@@ -33,7 +33,7 @@ class ChannelsList extends React.Component {
       <div className="col-3 border-right">
         <div className="d-flex mb-2">
           <span>Channels</span>
-          <button className="btn btn-link p-0 ml-auto">+</button>
+          <button type="button" className="btn btn-link p-0 ml-auto">+</button>
         </div>
         <ul className="nav flex-column nav-pills nav-fill">
           {

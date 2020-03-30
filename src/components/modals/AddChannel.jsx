@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
+import { useFormik } from 'formik';
+import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 
 export default (props) => {
+  const { show, onHide } = props;
   const inputEl = useRef(null);
   const formik = useFormik({
     initialValues: {
@@ -12,10 +15,11 @@ export default (props) => {
     },
   });
   return (
-    <Modal 
-      show={props.show}
-      onHide={props.onHide}
-      onEntered={() => inputEl.current.focus()}>
+    <Modal
+      show={show}
+      onHide={onHide}
+      onEntered={() => inputEl.current.focus()}
+    >
       <Modal.Header closeButton>
         <Modal.Title>Add new channel</Modal.Title>
       </Modal.Header>
@@ -23,13 +27,19 @@ export default (props) => {
       <Modal.Body>
         <form onSubmit={formik.handleSubmit}>
           <FormGroup>
-            <FormControl type="text" name="channelName" required ref={inputEl} onChange={formik.handleChange}
-            value={formik.values.channelName}/>
+            <FormControl
+              required
+              type="text"
+              name="channelName"
+              ref={inputEl}
+              onChange={formik.handleChange}
+              value={formik.values.channelName}
+            />
           </FormGroup>
           <FormControl type="submit" className="btn btn-primary" value="submit" />
         </form>
       </Modal.Body>
 
-  </Modal>
-  )
-}
+    </Modal>
+  );
+};
