@@ -31,6 +31,10 @@ class ChannelsList extends React.Component {
     });
     return (
       <div className="col-3 border-right">
+        <div className="d-flex mb-2">
+          <span>Channels</span>
+          <button class="btn btn-link p-0 ml-auto">+</button>
+        </div>
         <ul className="nav flex-column nav-pills nav-fill">
           {
             channels.map(({ id, name }) => (
