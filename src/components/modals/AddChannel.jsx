@@ -1,9 +1,22 @@
 import React, { useRef } from 'react';
 import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
+import { connect } from 'react-redux';
+// import * as actions from '../actions';
 
-export default (props) => {
-  const { show, onHide } = props;
+const mapStateToProps = (state) => {
+  const props = {
+    openModal: state.showModal,
+  };
+  return props;
+};
+
+// const actionCreators = {
+//   showModal: actions.showModal,
+// };
+
+const AddChannelModal = (props) => {
+  const { openModal, onHide } = props;
   const inputEl = useRef(null);
   const formik = useFormik({
     initialValues: {
@@ -16,7 +29,7 @@ export default (props) => {
   });
   return (
     <Modal
-      show={show}
+      show={openModal}
       onHide={onHide}
       onEntered={() => inputEl.current.focus()}
     >
@@ -43,3 +56,5 @@ export default (props) => {
     </Modal>
   );
 };
+
+export default connect(mapStateToProps)(AddChannelModal);

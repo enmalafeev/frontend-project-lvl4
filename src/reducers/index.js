@@ -12,9 +12,14 @@ const messages = createReducer([], {
   },
 });
 
+const modals = createReducer(false, {
+  [actions.showModal]: (state) => !state.modals,
+});
+
 
 export default combineReducers({
   currentChannel,
   channels,
   messages,
+  modals,
 });

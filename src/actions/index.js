@@ -11,6 +11,8 @@ export const socketConnected = createAction('SOCKET_STATUS_CONNECTED');
 
 export const socketMessageRecieved = createAction('SOCKET_MESSAGE_RECEIVED');
 
+export const showModal = createAction('SHOW_MODAL');
+
 export const addMessage = (message, channelId) => async () => {
   const url = routes.channelMessagesPath(channelId);
   await axios.post(url, message);

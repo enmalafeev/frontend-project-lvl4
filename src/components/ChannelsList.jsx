@@ -2,6 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import { connect } from 'react-redux';
 import { actions } from '../features/channels/currentChannelSlice';
+import { showModal } from '../actions';
 
 const mapStateToProps = (state) => {
   const props = {
@@ -13,6 +14,7 @@ const mapStateToProps = (state) => {
 
 const actionCreators = {
   setActiveChannel: actions.setActiveChannel,
+  showAddModal: showModal,
 };
 
 class ChannelsList extends React.Component {
@@ -20,6 +22,12 @@ class ChannelsList extends React.Component {
     e.preventDefault();
     const { setActiveChannel } = this.props;
     setActiveChannel(id);
+  }
+
+  handleShowModal = (e) => {
+    e.preventDefault();
+    const { showAddModal } = this.props;
+    showAddModal();
   }
 
   render() {
@@ -33,7 +41,13 @@ class ChannelsList extends React.Component {
       <div className="col-3 border-right">
         <div className="d-flex mb-2">
           <span>Channels</span>
-          <button type="button" className="btn btn-link p-0 ml-auto">+</button>
+          <button
+            type="button"
+            className="btn btn-link p-0 ml-auto"
+            onClick={this.handleShowModal}
+          >
+            +
+          </button>
         </div>
         <ul className="nav flex-column nav-pills nav-fill">
           {
