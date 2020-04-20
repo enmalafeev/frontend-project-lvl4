@@ -2,7 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 import { connect } from 'react-redux';
 import { actions } from '../features/channels/currentChannelSlice';
-import { showModal } from '../actions';
+// import { showModal } from '../actions';
 
 const mapStateToProps = (state) => {
   const props = {
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const actionCreators = {
   setActiveChannel: actions.setActiveChannel,
-  showAddModal: showModal,
+  // showAddModal: showModal,
 };
 
 class ChannelsList extends React.Component {
