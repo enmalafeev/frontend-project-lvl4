@@ -12,8 +12,13 @@ const messages = createReducer([], {
   },
 });
 
-const modals = createReducer(false, {
-  [actions.showModal]: (state) => !state.modals,
+const modals = createReducer({ showAdd: false }, {
+  [actions.showModal]: (state) => {
+    state.showAdd = true;
+  },
+  [actions.hideModal]: (state) => {
+    state.showAdd = false;
+  },
 });
 
 
