@@ -6,7 +6,7 @@ const inputMessageSlice = createSlice({
   reducers: {
     addMessage(state, action) {
       const { message } = action.payload;
-      state.push({ message });
+      state.push(message);
     },
   },
 });
