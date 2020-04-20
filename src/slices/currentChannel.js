@@ -3,17 +3,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const slice = createSlice({
-  name: 'modals',
-  initialState: {
-    showAdd: false,
-  },
+  name: 'currentChannel',
+  initialState: 1,
   reducers: {
-    showAddModal(state) {
-      state.showAdd = true;
-    },
-    hideAddModal(state) {
-      state.showAdd = false;
-    },
+    setActiveChannel: (state, action) => action.payload,
   },
 });
 
