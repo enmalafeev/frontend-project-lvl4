@@ -27,7 +27,7 @@ const AddChannelModal = (props) => {
 };
 
 const App = (props) => {
-  const { channels, show, hideAddModal } = props;
+  const { channels, show } = props;
   const handleHideModal = () => {
     // hideAddModal();
   };
