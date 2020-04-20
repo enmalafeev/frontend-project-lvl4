@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import currentChannel from '../features/channels/currentChannelSlice';
