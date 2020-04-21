@@ -14,8 +14,9 @@ import io from 'socket.io-client';
 import App from './components/App';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers';
-import * as actions from './actions';
+// import rootReducer from './reducers';
+// import * as actions from './actions';
+import reducer, { actions } from './slices';
 import { UserNameProvider } from './Context';
 
 if (process.env.NODE_ENV !== 'production') {
@@ -39,7 +40,7 @@ const preloadedState = {
 };
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer,
   preloadedState,
 });
 
@@ -51,7 +52,7 @@ if (!getName()) {
 
 const socket = io();
 
-socket.on('newMessage', (message) => store.dispatch(actions.socketMessageRecieved(message)));
+socket.on('newMessage', (message) => store.dispatch(actions.addMessageSuccess(message)));
 
 const root = document.getElementById('chat');
 

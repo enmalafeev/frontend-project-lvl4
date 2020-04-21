@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { connect } from 'react-redux';
-import { actions } from '../features/channels/currentChannelSlice';
+import { actions } from '../slices';
 // import { showModal } from '../actions';
 
 const mapStateToProps = (state) => {

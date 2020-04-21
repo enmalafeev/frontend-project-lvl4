@@ -6,9 +6,9 @@ const slice = createSlice({
   name: 'messages',
   initialState: [],
   reducers: {
-    addMessageSuccess(state, action) {
-      const { message } = action.payload;
-      state.push(message);
+    addMessageSuccess: (state, action) => {
+      const { data: { attributes } } = action.payload;
+      state.push(attributes);
     },
   },
 });
