@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { asyncActions } from '../slices';
 
 const mapStateToProps = (state) => {
   const props = {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 };
 
 const actionCreators = {
-  addMessage: actions.addMessage,
+  addMessage: asyncActions.addMessage,
 };
 
 const InputMessage = ({ currentChannel, addMessage }) => {

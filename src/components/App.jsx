@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ChannelsList from './ChannelsList';
 import ChatArea from './ChatArea';
 import getModal from './modals/index.js';
-// import { hideModal } from '../actions';
+import { actions } from '../slices';
 
 
 const mapStateToProps = (state) => {
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 };
 
 const actionCreators = {
-  // hideAddModal: hideModal,
+  hideAdd: actions.hideAddModal,
 };
 
 const AddChannelModal = (props) => {
@@ -27,9 +27,9 @@ const AddChannelModal = (props) => {
 };
 
 const App = (props) => {
-  const { channels, show } = props;
+  const { channels, show, hideAdd } = props;
   const handleHideModal = () => {
-    // hideAddModal();
+    hideAdd();
   };
   return (
     <div className="row h-100 pb-3">

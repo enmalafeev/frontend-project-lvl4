@@ -2,7 +2,6 @@ import React from 'react';
 import cn from 'classnames';
 import { connect } from 'react-redux';
 import { actions } from '../slices';
-// import { showModal } from '../actions';
 
 const mapStateToProps = (state) => {
   const props = {
@@ -14,7 +13,7 @@ const mapStateToProps = (state) => {
 
 const actionCreators = {
   setActiveChannel: actions.setActiveChannel,
-  // showAddModal: showModal,
+  showAdd: actions.showAddModal,
 };
 
 class ChannelsList extends React.Component {
@@ -26,8 +25,8 @@ class ChannelsList extends React.Component {
 
   handleShowModal = (e) => {
     e.preventDefault();
-    const { showAddModal } = this.props;
-    showAddModal();
+    const { showAdd } = this.props;
+    showAdd();
   }
 
   render() {
