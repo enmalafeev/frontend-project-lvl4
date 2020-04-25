@@ -5,14 +5,15 @@ import { createSlice } from '@reduxjs/toolkit';
 const slice = createSlice({
   name: 'modals',
   initialState: {
-    showAdd: false,
+    type: null,
   },
   reducers: {
-    showAddModal(state) {
-      state.showAdd = true;
+    showModal(state, { payload }) {
+      state.show = true;
+      state.modalType = payload;
     },
-    hideAddModal(state) {
-      state.showAdd = false;
+    hideModal(state) {
+      state.show = false;
     },
   },
 });

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { connect } from 'react-redux';
 import { asyncActions } from '../slices';
@@ -16,6 +16,12 @@ const actionCreators = {
 };
 
 const InputMessage = ({ currentChannel, addMessage }) => {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [null]);
+
   const formik = useFormik({
     initialValues: {
       userMessage: '',
@@ -32,14 +38,16 @@ const InputMessage = ({ currentChannel, addMessage }) => {
       <form onSubmit={formik.handleSubmit}>
         <div className="input-group">
           <input
+            required
+            ref={inputRef}
             className="col form-control"
             id="userMessage"
             name="userMessage"
             type="text"
+            placeholder="Type your message here"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.userMessage}
-            required
           />
         </div>
       </form>
