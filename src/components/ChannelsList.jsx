@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 
 const actionCreators = {
   setActiveChannel: actions.setActiveChannel,
-  showAdd: actions.showAddModal,
+  showModal: actions.showModal,
 };
 
 class ChannelsList extends React.Component {
@@ -23,10 +23,10 @@ class ChannelsList extends React.Component {
     setActiveChannel(id);
   }
 
-  handleShowModal = (e) => {
+  handleShowModal = (type) => (e) => {
     e.preventDefault();
-    const { showAdd } = this.props;
-    showAdd();
+    const { showModal } = this.props;
+    showModal(type);
   }
 
   render() {
@@ -43,7 +43,7 @@ class ChannelsList extends React.Component {
           <button
             type="button"
             className="btn btn-link p-0 ml-auto"
-            onClick={this.handleShowModal}
+            onClick={this.handleShowModal('addChannel')}
           >
             +
           </button>

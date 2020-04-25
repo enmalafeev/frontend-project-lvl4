@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 
 const AddChannelModal = (props) => {
-  const { show, onHide } = props;
+  const { onHide } = props;
   const inputEl = useRef(null);
   const formik = useFormik({
     initialValues: {
@@ -16,7 +16,7 @@ const AddChannelModal = (props) => {
   });
   return (
     <Modal
-      show={show}
+      show
       onHide={onHide}
       onEntered={() => inputEl.current.focus()}
     >

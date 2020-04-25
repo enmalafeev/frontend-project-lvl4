@@ -8,34 +8,31 @@ import { actions } from '../slices';
 
 const mapStateToProps = (state) => {
   const props = {
-    show: state.modals.showAdd,
+    modalData: state.modals,
   };
   return props;
 };
 
 const actionCreators = {
-  hideAdd: actions.hideAddModal,
+  hideModal: actions.hideModal,
 };
 
-const AddChannelModal = (props) => {
-  const add = getModal('addChannel');
-  return (
-    <>
-      {add(props)}
-    </>
-  );
+const renderModal = ({ modalData, modalProps, hideModal }) => {
+  if (!modalData.type) {
+    return null;
+  }
+  const SpecialModal = getModal(modalData.type);
+  return <SpecialModal modalProps={modalProps} onHide={hideModal} />;
 };
 
 const App = (props) => {
-  const { channels, show, hideAdd } = props;
-  const handleHideModal = () => {
-    hideAdd();
-  };
+  const { channels, modalData, hideModal } = props;
+  console.log(props);
   return (
     <div className="row h-100 pb-3">
       <ChannelsList channels={channels} />
       <ChatArea />
-      <AddChannelModal show={show} onHide={handleHideModal} />
+      {renderModal({ modalData, hideModal })}
     </div>
   );
 };
