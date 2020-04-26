@@ -3,15 +3,18 @@ import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 
 const AddChannelModal = (props) => {
-  const { onHide } = props;
+  const { modalProps: { addChannel }, onHide } = props;
   const inputEl = useRef(null);
   const formik = useFormik({
     initialValues: {
-      channelName: '',
+      name: '',
     },
     onSubmit: (values, { setSubmitting, resetForm }) => {
+      const newChannel = { data: { attributes: values } };
+      addChannel(newChannel);
       setSubmitting(false);
       resetForm();
+      onHide();
     },
   });
   return (
@@ -30,10 +33,10 @@ const AddChannelModal = (props) => {
             <FormControl
               required
               type="text"
-              name="channelName"
+              name="name"
               ref={inputEl}
               onChange={formik.handleChange}
-              value={formik.values.channelName}
+              value={formik.values.name}
             />
           </FormGroup>
           <FormControl type="submit" className="btn btn-primary" value="submit" />

@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 import modals, { actions as modalsActions } from './modals';
 import messages, { actions as messagesActions, addMessage } from './messages';
-import channels, { actions as channelsActions } from './channels';
+import channels, { actions as channelsActions, addChannel } from './channels';
 import currentChannel, { actions as currentChannelActions } from './currentChannel';
 
 
@@ -15,6 +15,7 @@ const actions = {
 
 const asyncActions = {
   addMessage,
+  addChannel,
 };
 
 export { actions, asyncActions };

@@ -14,8 +14,6 @@ import io from 'socket.io-client';
 import App from './components/App';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-// import rootReducer from './reducers';
-// import * as actions from './actions';
 import reducer, { actions } from './slices';
 import { UserNameProvider } from './Context';
 
@@ -53,6 +51,7 @@ if (!getName()) {
 const socket = io();
 
 socket.on('newMessage', (message) => store.dispatch(actions.addMessageSuccess(message)));
+socket.on('newChannel', (name) => store.dispatch(actions.addChannelSuccess(name)));
 
 const root = document.getElementById('chat');
 
