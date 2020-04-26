@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 
-const AddChannelModal = (props) => {
+const Add = (props) => {
   const { modalProps: { addChannel }, onHide } = props;
   const inputEl = useRef(null);
   const formik = useFormik({
@@ -47,4 +47,4 @@ const AddChannelModal = (props) => {
   );
 };
 
-export default AddChannelModal;
+export default Add;
