@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, FormGroup } from 'react-bootstrap';
+import { Modal, FormGroup, Button } from 'react-bootstrap';
 
 const Remove = (props) => {
   const { modalProps: { removeChannel }, onHide } = props;
@@ -15,12 +15,14 @@ const Remove = (props) => {
       </Modal.Header>
 
       <Modal.Body>
-        <form onSubmit={handleRemove()}>
-          <FormGroup>
-            <input type="submit" className="btn btn-danger" value="remove" />
-          </FormGroup>
-        </form>
+        <p>Are you sure you want to delete this channel and all its messages?</p>
       </Modal.Body>
+      <Modal.Footer>
+        <FormGroup>
+          <Button variant="primary" onClick={onHide}>Cancel</Button>
+          <Button variant="danger" onClick={handleRemove}>Yes</Button>
+        </FormGroup>
+      </Modal.Footer>
     </Modal>
   );
 };
