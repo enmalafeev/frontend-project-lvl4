@@ -4,11 +4,7 @@ import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 
 const Rename = (props) => {
   const { modalProps: { renameChannel, modalData }, onHide } = props;
-  const handleRename = (id) => (e) => {
-    e.preventDefault();
-    renameChannel(id);
-    onHide();
-  };
+
   const inputEl = useRef(null);
 
   useEffect(() => {
@@ -17,10 +13,11 @@ const Rename = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      body: modalData.item.name,
+      name: modalData.item.name,
     },
     onSubmit: (values, { setSubmitting, resetForm }) => {
-      renameChannel(modalData.id, values.body);
+      const newName = { data: { attributes: values } };
+      renameChannel(modalData.item.id, newName);
       setSubmitting(false);
       resetForm();
       onHide();
@@ -36,15 +33,14 @@ const Rename = (props) => {
       </Modal.Header>
 
       <Modal.Body>
-        <form onSubmit={handleRename}>
+        <form onSubmit={formik.handleSubmit}>
           <FormGroup>
             <FormControl
-              name="body"
-              data-testid="input-body"
+              name="name"
               required
               ref={inputEl}
               onChange={formik.handleChange}
-              value={formik.values.body}
+              value={formik.values.name}
             />
           </FormGroup>
           <FormControl type="submit" className="btn btn-primary" value="submit" />
