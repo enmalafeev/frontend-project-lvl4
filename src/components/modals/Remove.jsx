@@ -9,7 +9,10 @@ const Remove = (props) => {
     onHide();
   };
   return (
-    <Modal>
+    <Modal
+      show
+      onHide={onHide}
+    >
       <Modal.Header closeButton onHide={onHide}>
         <Modal.Title>Remove</Modal.Title>
       </Modal.Header>
@@ -18,10 +21,8 @@ const Remove = (props) => {
         <p>Are you sure you want to delete this channel and all its messages?</p>
       </Modal.Body>
       <Modal.Footer>
-        <FormGroup>
-          <Button variant="primary" onClick={onHide}>Cancel</Button>
-          <Button variant="danger" onClick={handleRemove}>Yes</Button>
-        </FormGroup>
+        <Button variant="primary" onClick={onHide}>Cancel</Button>
+        <Button variant="danger" onClick={handleRemove}>Yes</Button>
       </Modal.Footer>
     </Modal>
   );

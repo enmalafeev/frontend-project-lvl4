@@ -1,10 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { Modal, FormGroup, FormControl } from 'react-bootstrap';
 
 const Add = (props) => {
   const { modalProps: { addChannel }, onHide } = props;
-  const inputEl = useRef(null);
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.select();
+  }, [null]);
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -21,7 +26,6 @@ const Add = (props) => {
     <Modal
       show
       onHide={onHide}
-      onEntered={() => inputEl.current.focus()}
     >
       <Modal.Header closeButton>
         <Modal.Title>Add new channel</Modal.Title>
@@ -34,7 +38,7 @@ const Add = (props) => {
               required
               type="text"
               name="name"
-              ref={inputEl}
+              ref={inputRef}
               onChange={formik.handleChange}
               value={formik.values.name}
             />
