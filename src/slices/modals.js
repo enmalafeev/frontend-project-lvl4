@@ -10,7 +10,8 @@ const slice = createSlice({
   },
   reducers: {
     showModal(state, { payload }) {
-      state.type = payload;
+      state.type = payload.type;
+      state.item = payload.channel;
     },
     hideModal(state) {
       state.type = null;

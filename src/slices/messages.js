@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import routes from '../routes';
+import { actions as channelActions } from './channels';
 
 const slice = createSlice({
   name: 'messages',
@@ -9,6 +10,11 @@ const slice = createSlice({
     addMessageSuccess: (state, action) => {
       const { data: { attributes } } = action.payload;
       state.push(attributes);
+    },
+  },
+  extraReducers: {
+    [channelActions.removeChannelSucces](state, { payload: { data: { id } } }) {
+      return state.filter((message) => message.channelId !== id);
     },
   },
 });

@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
 
 const actionCreators = {
   addChannel: asyncActions.addChannel,
+  removeChannel: asyncActions.removeChannel,
   hideModal: actions.hideModal,
 };
 
@@ -32,10 +33,13 @@ const App = (props) => {
     modalData,
     hideModal,
     addChannel,
+    removeChannel,
   } = props;
 
   const modalProps = {
+    modalData,
     addChannel,
+    removeChannel,
   };
   return (
     <div className="row h-100 pb-3">

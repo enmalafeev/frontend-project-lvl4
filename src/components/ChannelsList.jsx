@@ -25,10 +25,10 @@ class ChannelsList extends React.Component {
     setActiveChannel(id);
   }
 
-  handleShowModal = (type) => (e) => {
+  handleShowModal = (type, channel = null) => (e) => {
     e.preventDefault();
     const { showModal } = this.props;
-    showModal(type);
+    showModal({ type, channel });
   }
 
   render() {
@@ -52,36 +52,36 @@ class ChannelsList extends React.Component {
         </div>
         <ul className="nav flex-column nav-pills nav-fill">
           {
-            channels.map(({ id, name, removable }) => {
-              if (removable) {
+            channels.map((channel) => {
+              if (channel.removable) {
                 return (
-                  <li key={id} className="d-inline-flex">
+                  <li key={channel.id} className="d-inline-flex">
                     <button
                       type="button"
-                      className={activeClass(id)}
-                      onClick={this.handleClick(id)}
-                      onKeyDown={this.handleClick(id)}
+                      className={activeClass(channel.id)}
+                      onClick={this.handleClick(channel.id)}
+                      onKeyDown={this.handleClick(channel.id)}
                     >
-                      {name}
+                      {channel.name}
                     </button>
                     <button type="button">
                       <FontAwesomeIcon icon={faEdit} />
                     </button>
-                    <button type="button" onClick={this.handleShowModal('removeChannel')}>
+                    <button type="button" onClick={this.handleShowModal('removeChannel', channel)}>
                       <FontAwesomeIcon icon={faTrash} />
                     </button>
                   </li>
                 );
               }
               return (
-                <li key={id} className="d-inline-flex">
+                <li key={channel.id} className="d-inline-flex">
                   <button
                     type="button"
-                    className={activeClass(id)}
-                    onClick={this.handleClick(id)}
-                    onKeyDown={this.handleClick(id)}
+                    className={activeClass(channel.id)}
+                    onClick={this.handleClick(channel.id)}
+                    onKeyDown={this.handleClick(channel.id)}
                   >
-                    {name}
+                    {channel.name}
                   </button>
                 </li>
               );

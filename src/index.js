@@ -52,6 +52,7 @@ const socket = io();
 
 socket.on('newMessage', (message) => store.dispatch(actions.addMessageSuccess(message)));
 socket.on('newChannel', (name) => store.dispatch(actions.addChannelSuccess(name)));
+socket.on('removeChannel', (id) => store.dispatch(actions.removeChannelSucces(id)));
 
 const root = document.getElementById('chat');
 

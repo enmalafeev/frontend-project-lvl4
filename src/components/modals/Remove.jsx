@@ -1,8 +1,8 @@
 import React from 'react';
-import { Modal, FormGroup, Button } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 const Remove = (props) => {
-  const { modalProps: { removeChannel }, onHide } = props;
+  const { modalProps: { removeChannel, modalData }, onHide } = props;
   const handleRemove = (id) => (e) => {
     e.preventDefault();
     removeChannel(id);
@@ -22,7 +22,7 @@ const Remove = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="primary" onClick={onHide}>Cancel</Button>
-        <Button variant="danger" onClick={handleRemove}>Yes</Button>
+        <Button variant="danger" onClick={handleRemove(modalData.item.id)}>Yes</Button>
       </Modal.Footer>
     </Modal>
   );
