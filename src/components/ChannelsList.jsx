@@ -64,7 +64,7 @@ class ChannelsList extends React.Component {
                     >
                       {channel.name}
                     </button>
-                    <button type="button">
+                    <button type="button" onClick={this.handleShowModal('renameChannel', channel)}>
                       <FontAwesomeIcon icon={faEdit} />
                     </button>
                     <button type="button" onClick={this.handleShowModal('removeChannel', channel)}>
