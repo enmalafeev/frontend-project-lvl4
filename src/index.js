@@ -21,6 +21,8 @@ if (process.env.NODE_ENV !== 'production') {
   localStorage.debug = 'chat:*';
 }
 
+console.log(gon)
+
 const getChannels = (gonChannels) => {
   const { channels } = gonChannels;
   return channels;
