@@ -13,7 +13,7 @@ const slice = createSlice({
     },
   },
   extraReducers: {
-    [channelActions.removeChannelSucces](state, { payload: { data: { id } } }) {
+    [channelActions.removeChannelSuccess](state, { payload: { data: { id } } }) {
       return state.filter((message) => message.channelId !== id);
     },
   },
