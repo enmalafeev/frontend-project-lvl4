@@ -5,7 +5,7 @@ import InputMessage from './InputMessage';
 import { UserNameContext } from '../Context';
 
 const selectMessages = (state) => state.messages;
-const selectFilter = (state) => state.currentChannel;
+const selectFilter = (state) => state.currentChannel.id;
 
 const showChannelMessages = createSelector(
   [selectMessages, selectFilter],

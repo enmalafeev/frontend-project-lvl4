@@ -5,8 +5,8 @@ import { asyncActions } from '../slices';
 
 const mapStateToProps = (state) => {
   const props = {
-    currentChannel: state.currentChannel,
-    channels: state.channels,
+    channels: state.channels.channels,
+    currentChannel: state.currentChannel.id,
   };
   return props;
 };
