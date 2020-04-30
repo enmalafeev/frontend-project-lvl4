@@ -15,7 +15,7 @@ import reducer, { actions } from './slices';
 
 export default () => {
   const { channels, messages } = gon;
-  console.log(gon);
+  console.log('gon', gon);
 
   const store = configureStore({
     reducer,

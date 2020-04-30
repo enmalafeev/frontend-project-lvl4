@@ -33,7 +33,6 @@ class ChannelsList extends React.Component {
 
   render() {
     const { channels, currentChannel } = this.props;
-    console.log(channels);
     const activeClass = (id) => cn({
       'list-group-item': true,
       'w-100': true,
