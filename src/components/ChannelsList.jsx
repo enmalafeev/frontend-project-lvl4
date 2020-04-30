@@ -8,7 +8,7 @@ import { actions } from '../slices';
 const mapStateToProps = (state) => {
   const props = {
     channels: state.channels.channels,
-    currentChannel: state.currentChannel,
+    currentChannel: state.currentChannel.id,
   };
   return props;
 };

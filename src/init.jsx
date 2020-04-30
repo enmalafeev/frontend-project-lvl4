@@ -14,8 +14,7 @@ import { UserNameProvider } from './Context';
 import reducer, { actions } from './slices';
 
 export default () => {
-  const { channels, messages } = gon;
-  console.log('gon', gon);
+  const { channels, messages, currentChannelId } = gon;
 
   const store = configureStore({
     reducer,
@@ -23,6 +22,7 @@ export default () => {
 
   store.dispatch(actions.initChannels(channels));
   store.dispatch(actions.initMessages(messages));
+  store.dispatch(actions.initCurrentChannelId(currentChannelId));
 
   const userName = faker.name.findName();
   const getName = () => cookies.get('user');
