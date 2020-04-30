@@ -20,7 +20,7 @@ const InputMessage = ({ currentChannel, addMessage }) => {
 
   useEffect(() => {
     inputRef.current.focus();
-  }, [null]);
+  }, [currentChannel]);
 
   const formik = useFormik({
     initialValues: {

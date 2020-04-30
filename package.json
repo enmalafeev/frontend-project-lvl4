@@ -7,7 +7,7 @@
     "slack": "dist/bin/slack.js"
   },
   "engines": {
-    "node": "9"
+    "node": "10"
   },
   "scripts": {
     "test": "jest",
