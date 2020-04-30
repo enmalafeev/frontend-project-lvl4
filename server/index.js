@@ -36,7 +36,7 @@ const setUpStaticAssets = (app) => {
   });
 };
 
-export default (options) => {
+export default (state = {}) => {
   const app = fastify();
 
   setUpViews(app);
@@ -44,7 +44,7 @@ export default (options) => {
 
   const io = socket(app.server);
 
-  addRoutes(app, io, options.state || {});
+  addRoutes(app, io, state);
 
   return app;
 };
