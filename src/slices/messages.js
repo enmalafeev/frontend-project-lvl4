@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import routes from '../routes';
@@ -7,6 +8,9 @@ const slice = createSlice({
   name: 'messages',
   initialState: [],
   reducers: {
+    initMessages(state, { payload }) {
+      state = payload;
+    },
     addMessageSuccess: (state, action) => {
       const { data: { attributes } } = action.payload;
       state.push(attributes);

@@ -1,22 +1,29 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import _ from 'lodash';
 import routes from '../routes';
 
 const slice = createSlice({
   name: 'channels',
-  initialState: [],
+  initialState: {
+    channels: [],
+  },
   reducers: {
+    initChannels(state, { payload }) {
+      state.channels = payload;
+    },
     addChannelSuccess(state, { payload }) {
       const { data: { attributes } } = payload;
-      state.push(attributes);
+      state.channels.push(attributes);
     },
     removeChannelSuccess(state, { payload }) {
       const { data: { id } } = payload;
-      return state.filter((channel) => channel.id !== id);
+      _.remove(state.channels, (channel) => channel.id === id);
     },
     renameChannelSuccess(state, { payload }) {
       const { data: { attributes: { id, name } } } = payload;
-      const channel = state.find((item) => item.id === id);
+      const channel = state.channels.find((item) => item.id === id);
       channel.name = name;
     },
   },

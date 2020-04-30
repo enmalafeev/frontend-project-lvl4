@@ -7,7 +7,7 @@ import { actions } from '../slices';
 
 const mapStateToProps = (state) => {
   const props = {
-    channels: state.channels,
+    channels: state.channels.channels,
     currentChannel: state.currentChannel,
   };
   return props;
@@ -33,6 +33,7 @@ class ChannelsList extends React.Component {
 
   render() {
     const { channels, currentChannel } = this.props;
+    console.log(channels);
     const activeClass = (id) => cn({
       'list-group-item': true,
       'w-100': true,
