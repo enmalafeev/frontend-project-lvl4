@@ -18,8 +18,8 @@ const slice = createSlice({
     addMessageRequest(state) {
       state.processing = true;
     },
-    addMessageSuccess: (state, action) => {
-      const { data: { attributes } } = action.payload;
+    addMessageSuccess: (state, { payload }) => {
+      const { data: { attributes } } = payload;
       state.messages.push(attributes);
       state.processing = false;
     },
@@ -28,7 +28,8 @@ const slice = createSlice({
     },
   },
   extraReducers: {
-    [channelActions.removeChannelSuccess](state, { payload: { data: { id } } }) {
+    [channelActions.removeChannelSuccess](state, { payload }) {
+      const { data: { id } } = payload;
       _.remove(state.messages, (message) => message.channelId === id);
     },
   },
