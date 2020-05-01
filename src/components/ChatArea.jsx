@@ -4,7 +4,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import InputMessage from './InputMessage';
 import { UserNameContext } from '../Context';
 
-const selectMessages = (state) => state.messages;
+const selectMessages = (state) => state.messages.messages;
 const selectFilter = (state) => state.currentChannel.id;
 
 const showChannelMessages = createSelector(
