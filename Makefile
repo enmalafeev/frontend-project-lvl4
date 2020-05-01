@@ -22,6 +22,10 @@ test:
 lint:
 	npx eslint . --ext js,jsx
 
+check:
+	make lint
+	make test
+
 publish:
 	npm publish
 
