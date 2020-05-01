@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
   const props = {
     channels: state.channels.channels,
     currentChannel: state.currentChannel.id,
+    disabled: state.messages.processing,
   };
   return props;
 };
@@ -15,7 +16,7 @@ const actionCreators = {
   addMessage: asyncActions.addMessage,
 };
 
-const InputMessage = ({ currentChannel, addMessage }) => {
+const InputMessage = ({ currentChannel, addMessage, disabled }) => {
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ const InputMessage = ({ currentChannel, addMessage }) => {
         <div className="input-group">
           <input
             required
+            disabled={disabled}
             ref={inputRef}
             className="col form-control"
             id="userMessage"
