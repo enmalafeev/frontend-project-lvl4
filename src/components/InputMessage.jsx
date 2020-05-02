@@ -1,12 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
 import { connect } from 'react-redux';
+import cn from 'classnames';
 import { asyncActions } from '../slices';
 
 const mapStateToProps = (state) => {
   const props = {
     channels: state.channels.channels,
     currentChannel: state.currentChannel.id,
+    error: state.errors.error,
+    isError: state.errors.isError,
     disabled: state.messages.processing,
   };
   return props;
@@ -16,7 +19,15 @@ const actionCreators = {
   addMessage: asyncActions.addMessage,
 };
 
-const InputMessage = ({ currentChannel, addMessage, disabled }) => {
+const InputMessage = ({
+  currentChannel, addMessage, isError, error, disabled,
+}) => {
+  const inputClass = (err) => cn({
+    'form-control': true,
+    col: true,
+    'is-invalid': err,
+  });
+
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -42,7 +53,7 @@ const InputMessage = ({ currentChannel, addMessage, disabled }) => {
             required
             disabled={disabled}
             ref={inputRef}
-            className="col form-control"
+            className={inputClass(isError)}
             id="userMessage"
             name="userMessage"
             type="text"
@@ -52,6 +63,7 @@ const InputMessage = ({ currentChannel, addMessage, disabled }) => {
             value={formik.values.userMessage}
           />
         </div>
+        {isError && <div className="text-danger">{error}</div>}
       </form>
     </div>
   );

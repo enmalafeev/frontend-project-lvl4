@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import InputMessage from './InputMessage';
+import ErrorBox from './ErrorBoxContainer';
 import { UserNameContext } from '../Context';
 
 const selectMessages = (state) => state.messages.messages;
@@ -37,6 +38,7 @@ const RenderMessages = ({ messages }) => {
 const ChatArea = ({ messages }) => (
   <div className="col h-100">
     <div className="d-flex flex-column h-100">
+      <ErrorBox />
       <RenderMessages messages={messages} />
       <InputMessage />
     </div>
