@@ -6,7 +6,7 @@ const ErrorBox = (props) => {
   const { error, isError } = errorStore;
   return (
     <div className="row justify-content-center">
-      <div className="col-6">
+      <div className="col">
         <Alert variant="danger" show={isError} onClose={closeErrorFunction} dismissible>
           {error}
         </Alert>

@@ -43,8 +43,7 @@ const addMessage = (message, channelId) => async (dispatch) => {
     const url = routes.channelMessagesPath(channelId);
     await axios.post(url, message);
   } catch (e) {
-    dispatch(addMessageFailure(new Error(e)));
-    // throw e;
+    dispatch(addMessageFailure(e));
   }
 };
 

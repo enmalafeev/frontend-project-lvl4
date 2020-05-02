@@ -7,12 +7,12 @@ const slice = createSlice({
   name: 'errors',
   initialState: {
     isError: false,
-    error: {},
+    error: '',
   },
   reducers: {
     clearErrors(state) {
       state.isError = false;
-      state.errors = {};
+      state.error = '';
     },
   },
   extraReducers: {
