@@ -37,7 +37,6 @@ export default () => {
   socket.on('removeChannel', (id) => store.dispatch(actions.removeChannelSuccess(id)));
   socket.on('renameChannel', (id) => store.dispatch(actions.renameChannelSuccess(id)));
 
-
   const root = document.getElementById('chat');
 
   render(

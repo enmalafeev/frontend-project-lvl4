@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import _ from 'lodash';
 import routes from '../routes';
+import { actions as errorActions } from './errors';
 import { actions as channelActions } from './channels';
 
 const slice = createSlice({
@@ -43,6 +44,7 @@ const addMessage = (message, channelId) => async (dispatch) => {
     const url = routes.channelMessagesPath(channelId);
     await axios.post(url, message);
   } catch (e) {
+    dispatch(errorActions.addError(e));
     dispatch(addMessageFailure(e));
   }
 };
