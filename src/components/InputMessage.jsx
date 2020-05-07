@@ -1,32 +1,22 @@
 import React, { useRef, useEffect } from 'react';
 import { useFormik } from 'formik';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 import { asyncActions } from '../slices';
 
-const mapStateToProps = (state) => {
-  const props = {
-    channels: state.channels.channels,
-    currentChannel: state.currentChannel.id,
-    error: state.errors.error,
-    isError: state.errors.isError,
-    disabled: state.messages.processing,
-  };
-  return props;
-};
-
-const actionCreators = {
-  addMessage: asyncActions.addMessage,
-};
-
-const InputMessage = ({
-  currentChannel, addMessage, isError, error, disabled,
-}) => {
+const InputMessage = () => {
   const inputClass = (err) => cn({
     'form-control': true,
     col: true,
     'is-invalid': err,
   });
+  const currentChannel = useSelector((state) => state.currentChannel.id);
+  const disabled = useSelector((state) => state.messages.processing);
+  const error = useSelector((state) => state.errors.error);
+  const isError = useSelector((state) => state.errors.isError);
+  const { addMessage } = asyncActions;
+
+  const dispatch = useDispatch();
 
   const inputRef = useRef(null);
 
@@ -40,7 +30,7 @@ const InputMessage = ({
     },
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const newMessage = { data: { attributes: values } };
-      addMessage(newMessage, currentChannel);
+      dispatch(addMessage(newMessage, currentChannel));
       setSubmitting(false);
       resetForm();
     },
@@ -69,4 +59,4 @@ const InputMessage = ({
   );
 };
 
-export default connect(mapStateToProps, actionCreators)(InputMessage);
+export default InputMessage;
