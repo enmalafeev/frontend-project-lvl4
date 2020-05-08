@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import InputMessage from './InputMessage';
 import ErrorBox from './ErrorBoxContainer';
@@ -13,11 +13,8 @@ const showChannelMessages = createSelector(
   (messages, currentChannel) => messages.filter(({ channelId }) => channelId === currentChannel),
 );
 
-const mapStateToProps = (state) => ({
-  messages: showChannelMessages(state),
-});
-
-const RenderMessages = ({ messages }) => {
+const RenderMessages = () => {
+  const messages = useSelector(showChannelMessages);
   const userName = useContext(UserNameContext);
   return (
     <ul id="messages-box" className="chat-messages overflow-auto mb-3 p-0">
@@ -45,4 +42,4 @@ const ChatArea = ({ messages }) => (
   </div>
 );
 
-export default connect(mapStateToProps)(ChatArea);
+export default ChatArea;
