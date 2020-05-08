@@ -11,7 +11,6 @@ const InputMessage = () => {
     'is-invalid': err,
   });
   const currentChannel = useSelector((state) => state.currentChannel.id);
-  const disabled = useSelector((state) => state.messages.processing);
   const error = useSelector((state) => state.errors.error);
   const isError = useSelector((state) => state.errors.isError);
   const { addMessage } = asyncActions;
@@ -30,9 +29,11 @@ const InputMessage = () => {
     },
     onSubmit: (values, { setSubmitting, resetForm }) => {
       const newMessage = { data: { attributes: values } };
-      dispatch(addMessage(newMessage, currentChannel));
-      setSubmitting(false);
-      resetForm();
+      dispatch(addMessage(newMessage, currentChannel))
+        .then(() => {
+          setSubmitting(false);
+          resetForm();
+        });
     },
   });
   return (
@@ -41,7 +42,7 @@ const InputMessage = () => {
         <div className="input-group">
           <input
             required
-            disabled={disabled}
+            disabled={formik.isSumbitting}
             ref={inputRef}
             className={inputClass(isError)}
             id="userMessage"
