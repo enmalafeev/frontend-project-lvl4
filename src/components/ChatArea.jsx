@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import InputMessage from './InputMessage';
-import ErrorBox from './ErrorBoxContainer';
+import ErrorBox from './ErrorBox';
 import { UserNameContext } from '../Context';
 
 const selectMessages = (state) => state.messages.messages;
