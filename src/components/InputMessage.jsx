@@ -27,13 +27,11 @@ const InputMessage = () => {
     initialValues: {
       userMessage: '',
     },
-    onSubmit: (values, { setSubmitting, resetForm }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       const newMessage = { data: { attributes: values } };
-      dispatch(addMessage(newMessage, currentChannel))
-        .then(() => {
-          setSubmitting(false);
-          resetForm();
-        });
+      await dispatch(addMessage(newMessage, currentChannel));
+      setSubmitting(false);
+      resetForm();
     },
   });
   return (

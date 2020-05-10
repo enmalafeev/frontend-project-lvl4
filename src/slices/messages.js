@@ -34,6 +34,7 @@ const addMessage = (message, channelId) => async (dispatch) => {
     await axios.post(url, message);
   } catch (e) {
     dispatch(errorActions.addError(e));
+    throw e;
   }
 };
 
