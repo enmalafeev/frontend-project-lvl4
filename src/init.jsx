@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 import App from './components/App';
 import { UserNameProvider } from './Context';
-import reducer, { actions } from './slices';
+import reducer, { actions, asyncActions } from './slices';
 
 export default () => {
   const { channels, messages, currentChannelId } = gon;
@@ -32,7 +32,7 @@ export default () => {
 
   const socket = io();
 
-  socket.on('newMessage', (message) => store.dispatch(actions.addMessageSuccess(message)));
+  socket.on('newMessage', (message) => store.dispatch(asyncActions.addMessage.fulfilled(message)));
   socket.on('newChannel', (name) => store.dispatch(actions.addChannelSuccess(name)));
   socket.on('removeChannel', (id) => store.dispatch(actions.removeChannelSuccess(id)));
   socket.on('renameChannel', (id) => store.dispatch(actions.renameChannelSuccess(id)));

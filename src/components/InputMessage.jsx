@@ -10,7 +10,7 @@ const InputMessage = () => {
     col: true,
     'is-invalid': err,
   });
-  const currentChannel = useSelector((state) => state.currentChannel.id);
+  const channelId = useSelector((state) => state.currentChannel.id);
   const error = useSelector((state) => state.errors.error);
   const isError = useSelector((state) => state.errors.isError);
   const { addMessage } = asyncActions;
@@ -21,17 +21,17 @@ const InputMessage = () => {
 
   useEffect(() => {
     inputRef.current.focus();
-  }, [currentChannel]);
+  }, [channelId]);
 
   const formik = useFormik({
     initialValues: {
       userMessage: '',
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
-      const newMessage = { data: { attributes: values } };
-      await dispatch(addMessage(newMessage, currentChannel));
-      setSubmitting(false);
-      resetForm();
+      const message = { data: { attributes: values } };
+      await dispatch(addMessage({ message, channelId }))
+        .then(setSubmitting(false))
+        .then(resetForm());
     },
   });
   return (
