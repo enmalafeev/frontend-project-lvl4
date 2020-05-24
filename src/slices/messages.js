@@ -30,12 +30,13 @@ const slice = createSlice({
     initMessages(state, { payload }) {
       state.messages = payload;
     },
-  },
-  extraReducers: {
-    [addMessage.fulfilled]: (state, { payload }) => {
+    addMessageSuccess(state, { payload }) {
       const { data: { attributes } } = payload;
       state.messages.push(attributes);
     },
+  },
+  extraReducers: {
+    [addMessage.fulfilled]: () => {},
     [channelActions.removeChannelSuccess](state, { payload }) {
       const { data: { id } } = payload;
       _.remove(state.messages, (message) => message.channelId === id);
