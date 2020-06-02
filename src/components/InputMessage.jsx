@@ -29,9 +29,9 @@ const InputMessage = () => {
     },
     onSubmit: async (values, { setSubmitting, resetForm }) => {
       const message = { data: { attributes: values } };
-      await dispatch(addMessage({ message, channelId }))
-        .then(setSubmitting(false))
-        .then(resetForm());
+      await dispatch(addMessage({ message, channelId }));
+      setSubmitting(false);
+      resetForm();
     },
   });
   return (
